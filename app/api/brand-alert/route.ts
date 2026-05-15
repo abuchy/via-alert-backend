@@ -27,16 +27,10 @@ export async function POST(req: Request) {
     });
 
     await transporter.sendMail({
-      from: `ShopMy Extension <${user}>`,
+      from: `"ShopMy Browser Extension" <${user}>`,
       to,
-      subject: `New unmapped brand detected: ${site || "unknown site"}`,
-      text: [
-        "The browser extension was clicked on a site that is not in the mappings.",
-        "",
-        `Site: ${site || "unknown"}`,
-        `URL: ${fullUrl || "unknown"}`,
-        `Reason: ${reason || "unsupported brand clicked in extension"}`
-      ].join("\n")
+      subject: `🚨 Unsupported Brand Request`,
+      text: `A user attempted to use your browser extension on the following site: ${site}`
     });
 
     return NextResponse.json({ ok: true });
