@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     });
 
     await transporter.sendMail({
-      from: `"ShopMy Browser Extension" <${user}>`,
+      from: `"Via Browser Extension" <${user}>`,
       to,
       subject: `🚨 Unsupported Brand Request`,
       text: `A user attempted to use your browser extension on the following site: ${site}`
